@@ -2,7 +2,12 @@
     color: red;
     font-size: 14px;
     font-weight: bolder;
-
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    align-items: center;
+    justify-content: center;
+     
 }
 
 .sticky_nav {
@@ -18,5 +23,9 @@
     border-radius: 7px;
     width: 50%;
     margin: auto;
+    display: flex;
 }
 
+.nav_routes {
+    display: flex;
+}
