@@ -16,19 +16,19 @@ export const Header = () => {
                 <div className="nav_routes">
 
                     <NavLink className={styles.nav} to="/flights" activeStyle={{padding: "0 12px 0 12px", backgroundColor: "blue", color: "black"}}>
-                        Flights
+                        Flights.
                     </NavLink>
 
                     <NavLink className={styles.nav} to="/hotels" activeStyle={{padding: "0 12px 0 12px", backgroundColor: "blue", color: "black"}}>
-                        Hotels
+                        Hotels.
                     </NavLink>
 
                     <NavLink className={styles.nav} to="/trains" activeStyle={{padding: "0 12px 0 12px", backgroundColor: "blue", color: "black"}}>
-                        Trains
+                        Trains.
                     </NavLink>
 
                     <NavLink className={styles.nav} to="/explore" activeStyle={{padding: "0 12px 0 12px", backgroundColor: "blue", color: "black"}}>
-                        And More
+                        And More.
                     </NavLink>
 
                 </div>
