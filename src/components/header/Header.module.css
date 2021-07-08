@@ -1,0 +1,22 @@
+.nav {
+    color: red;
+    font-size: 14px;
+    font-weight: bolder;
+
+}
+
+.sticky_nav {
+    background-color: rgb(0, 209, 216);
+    padding: 10px;
+    display: flex;
+}
+
+.nav_card {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 7px;
+    width: 50%;
+    margin: auto;
+}
+
