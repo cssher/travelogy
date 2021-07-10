@@ -1,31 +1,71 @@
-.nav {
-    color: red;
-    font-size: 14px;
-    font-weight: bolder;
-    display: flex;
-    flex-direction: column;
-    width: 200px;
-    align-items: center;
-    justify-content: center;
-     
+.logo_div {
+  text-align: center;
+  width: 100%;
+  margin: auto;
+}
+
+.full_logo {
+  color: white;
+  font-size: x-large;
+  font-weight: bolder;
 }
 
 .sticky_nav {
-    background-color: rgb(0, 209, 216);
-    padding: 10px;
-    display: flex;
-}
-
-.nav_card {
-    padding: 10px;
-    text-align: center;
-    border: 1px solid black;
-    border-radius: 7px;
-    width: 50%;
-    margin: auto;
-    display: flex;
+  background-color: #8338ec;
+  padding: 5px;
+  width: auto;
+  margin: auto;
 }
 
 .nav_routes {
-    display: flex;
+  display: flex;
+  justify-content: space-around;
+}
+
+.nav_links {
+  color: white;
+  text-decoration: none;
+  font-size: larger;
+  font-weight: bolder;
+}
+
+.toggle_forms_card {
+  box-shadow: 0 1px 7px 0 rgb(0 0 0 / 40%);
+  padding: 5px;
+  text-align: center;
+  border-radius: 10px;
+  width: 50%;
+  margin: auto;
+  background-color: white;
+  position: relative;
+  z-index: 1;
+}
+
+.form_card_links {
+  display: flex;
+  justify-content: space-around;
+}
+
+.form_card_icon_and_text {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav_icons_link {
+  text-decoration: none;
+  color: #000000;
+  font-weight: bolder;
+  font-size: 1em;
+}
+
+.form_wrapper {
+  height: 200px;
+  background-color: white;
+  width: 90vw;
+  margin: auto;
+  margin-top: -50px;
+  border-radius: 10px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
 }

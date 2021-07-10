@@ -7,9 +7,7 @@ function Routes() {
   return (
     <div>
       <Route path="/" render={() => <Header />} />
-      <Switch>
-        <Route path="/" exact render={() => <HomePage />} />
-      </Switch>
+      <Route path="/" render={() => <HomePage />} />
     </div>
   );
 }
