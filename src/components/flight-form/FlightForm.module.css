@@ -1,4 +1,37 @@
 .form_container {
-    text-align: center;
-    margin-top: 60px;
+  margin-top: 60px;
+}
+
+.flight_form {
+  display: flex;
+  padding: 10px;
+}
+
+.origin_autocomplete {
+  margin: 10px;
+}
+
+.swap_places {
+  margin-top: 15px;
+}
+
+.search_flight_btn_div {
+  margin: auto;
+}
+
+.search_flight_btn {
+  background-color: #8338ec;
+  border: none;
+  padding: 17px;
+  width: 200%;
+  border-radius: 25px;
+  box-shadow: 3px 7px hotpink;
+  color: white;
+  font-size: larger;
+  font-weight: bolder;
+}
+
+.alert {
+  width: 40%;
+  margin: auto;
 }
