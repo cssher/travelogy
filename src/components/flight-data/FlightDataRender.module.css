@@ -1,0 +1,89 @@
+.render_data_container {
+  height: 300px;
+  background-color: white;
+  width: 90vw;
+  margin: auto;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+.heading_div {
+  padding: 8px;
+}
+
+.heading_ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  background-color: rgb(238, 238, 238);
+  border-radius: 10px;
+}
+
+.heading_li {
+  padding: 5px;
+  font-weight: bolder;
+  text-decoration: underline;
+  text-decoration-color: hotpink;
+  text-decoration-thickness: 0.2em;
+  margin: auto;
+}
+
+.list_ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  border-bottom: 1px solid rgb(230, 226, 226);
+}
+
+.list_li {
+    margin: auto;
+    font-size: large;
+    font-weight: bolder;
+}
+
+.book_flight_btn{
+    padding: 10px;
+    border: none;
+    border-radius: 15px;
+    background-color: rgb(146, 90, 236);
+    color: white;
+    font-weight: bold;
+    width: 100%;
+    cursor: pointer;
+}
+
+.modal_styles {
+    top: 50%;
+    left: 50%;
+    background-color: rgb(250, 242, 242); /* Black w/ opacity */
+    display: grid;
+    place-items: center;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    width: 400px;
+    padding: 2px 4px 3px;
+
+}
+
+.modal_title {
+    text-align: center;
+    text-decoration: underline;
+    text-decoration-color: hotpink;
+    text-decoration-thickness: 0.2em;
+}
+
+.simple_modal_description {
+ text-align: center;
+ margin: auto;
+}
+
+.conirm_booking_btn {
+ padding: 10px;
+ border: none;
+ background: rgb(117, 255, 104);
+ font-weight: bold;
+ border-radius: 10px;
+ cursor: pointer;
+}

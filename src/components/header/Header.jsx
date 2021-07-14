@@ -2,8 +2,6 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./Header.module.css";
 import { FaPlaneDeparture, FaHotel, FaTrain } from "react-icons/fa";
-import { MdLocalHotel } from "react-icons/md";
-
 import { FlightForm } from "../flight-form/FlightForm";
 import { HotelForm } from "../hotel-form/HotelForm";
 import { TrainForm } from "../train-form/TrainForm";
