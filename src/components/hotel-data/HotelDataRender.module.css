@@ -1,0 +1,141 @@
+.render_data_container {
+  height: 300px;
+  background-color: white;
+  width: 90vw;
+  margin: auto;
+  margin-top: 84px;
+  border-radius: 10px;
+  overflow-y: auto;
+  /* padding: 20px; */
+}
+
+.card_container {
+  display: flex;
+}
+
+.main_left {
+  width: 80%;
+  border: 1px solid rgb(215, 219, 221);
+  padding: 10px;
+  display: flex;
+}
+.main_right {
+  width: 20%;
+  border: 1px solid skyblue;
+  padding: 10px;
+}
+
+.hotel_image_div {
+  width: 25%;
+  height: 180px;
+}
+
+.text_description_div {
+  width: 55%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  text-align: left;
+}
+
+h3 {
+  margin: 0 0 0 2px;
+}
+
+h4 {
+  margin: 0 0 0 2px;
+}
+
+p {
+  margin: 0 0 0 2px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.icons {
+  font-size: 25px;
+}
+
+.check_in_check_out_div {
+  width: 20%;
+}
+
+.check_in_check_out {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.ul_ci_co {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  justify-content: space-between;
+  color: rgb(22, 22, 22);
+  font-weight: bold;
+  background-color: rgb(255, 246, 194);
+  margin: 0;
+  padding: 2px;
+  border-radius: 10px;
+  border-bottom: 1px solid rgb(219, 217, 217);
+}
+
+.ul_ci_co_times {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  justify-content: space-between;
+  color: rgb(172, 136, 255);
+  font-weight: bold;
+  background-color: rgb(255, 246, 194);
+  margin: 0;
+  padding: 2px;
+  border-radius: 10px;
+  border-top: 1px solid rgb(190, 186, 186);
+}
+
+.ribbon {
+  border: 1px solid rgb(13, 219, 13);
+  margin: 5px 0 0 0;
+  padding: 0px;
+  border-radius: 25px;
+  color: rgb(13, 219, 13);
+  font-weight: bold;
+}
+
+.strikethrough_price {
+  font-size: 15px;
+  text-decoration: line-through;
+  color: red;
+}
+
+.final_price {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.book_hotel_btn {
+  padding: 5%;
+  border: none;
+  background: royalblue;
+  color: aliceblue;
+  font-weight: bolder;
+  border-radius: 25px;
+}
+
+.book_hotel_btn > a {
+  text-decoration: none;
+  color: white;
+}
+.currency {
+  font-size: 15px;
+}
+
+.price_div {
+  text-align: center;
+  width: 100%; /* Can be in percentage also. */
+  height: auto;
+  margin: 0 auto;
+  padding: 10px;
+  position: relative;
+}

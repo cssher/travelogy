@@ -1,0 +1,53 @@
+.form_container {
+    margin-top: 60px;
+    width: 100%;
+  }
+  
+  .hotel_form {
+    display: flex;
+    padding: 10px;
+    width: 90%;
+    flex-wrap: wrap;
+  }
+  
+  .hotel_autocomplete {
+    margin: auto;
+  }
+
+  
+  .search_hotel_btn_div {
+    margin: auto;
+  }
+  
+  .search_hotel_btn {
+    background-color: royalblue;
+    border: none;
+    padding: 15px;
+    width: 190%;
+    border-radius: 25px;
+    box-shadow: 2px 6px hotpink;
+    color: white;
+    font-size: large;
+    font-weight: bolder;
+    cursor: pointer;
+  }
+  
+  .alert {
+    width: 40%;
+    margin: auto;
+  }
+  
+  .date_range {
+    margin: auto;
+  }
+  
+  .date_range_input {
+    padding: 18px;
+    text-align: left;
+    font-size: 14px;
+    border: 1px solid rgb(182, 179, 179);
+    border-radius: 5px;
+    font-weight: bolder;
+  }
+  
+  

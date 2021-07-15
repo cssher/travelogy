@@ -40,7 +40,7 @@ export const Header = () => {
             className={styles.nav_icons_link}
             to="/flights"
             activeStyle={{
-              color: "#8338ec",
+              color: "royalblue",
             }}
           >
             <div className={styles.form_card_icon_and_text}>
@@ -54,7 +54,7 @@ export const Header = () => {
             className={styles.nav_icons_link}
             to="/hotels"
             activeStyle={{
-              color: "#8338ec",
+              color: "royalblue",
             }}
           >
             <div className={styles.form_card_icon_and_text}>
@@ -68,7 +68,7 @@ export const Header = () => {
             className={styles.nav_icons_link}
             to="/trains"
             activeStyle={{
-              color: "#8338ec",
+              color: "royalblue",
             }}
           >
             <div className={styles.form_card_icon_and_text}>

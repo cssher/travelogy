@@ -140,7 +140,6 @@ export const FlightForm = () => {
       let originCode = selectedOriginVal[0].PlaceId;
       let destinationCode = selectedDestinationVal[0].PlaceId;
 
-
       console.log(originCode, destinationCode);
 
       const options = {
@@ -207,7 +206,6 @@ export const FlightForm = () => {
         <div className={styles.origin_autocomplete}>
           <Autocomplete
             id="origin_id"
-            freeSolo
             options={
               originDropdownData?.Places
                 ? originDropdownData.Places
@@ -236,7 +234,6 @@ export const FlightForm = () => {
         <div className={styles.origin_autocomplete}>
           <Autocomplete
             id="destination_id"
-            freeSolo
             options={
               destinationDropdownData?.Places
                 ? destinationDropdownData.Places

@@ -7,7 +7,7 @@ function Routes() {
   return (
     <div>
       <Route path="/" render={() => <Header />} />
-      <Route path="/" render={() => <HomePage />} />
+      {/* <Route path="/" render={() => <HomePage />} /> */}
     </div>
   );
 }

@@ -118,7 +118,7 @@ export const FlightDataRender = (props) => {
           {result ? (
             result.map((e) => {
               return (
-                <ul className={styles.list_ul} key={e.Price}>
+                <ul className={styles.list_ul} key={e.Price} key={e.hotel_id}>
                   <Modal open={open} onClose={handleClose} aria-labelledby="simple-modal-title" aria-describedby="simple-modal-description">
                   <div className={styles.modal_styles}>
                      <h2 className={styles.modal_title}>Confirm Flight Booking</h2>
