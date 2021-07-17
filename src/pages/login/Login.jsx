@@ -22,9 +22,31 @@ export const Login = () => {
 
   console.log(isAuth, 'isAuth');
 
-  return (
-      lo
-  )
+  return isAuth ? (
+    <Redirect to="/" />
+  ) : (
+    <div className={styles.login_form_div}>
+      <form className={styles.form} onSubmit={handleLoginSubmit}>
+        <input
+          type="email"
+          placeholder="Enter Email ID"
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <input
+          type="password"
+          placeholder="Enter Password"
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <button type="submit">Login In</button>
+      </form>
+      <br />
+      <Link className={styles.register_link} to="/registration">
+        Sign Up
+      </Link>
+    </div>
+  );
 
   // return (
   //         <>
