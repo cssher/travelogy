@@ -9,6 +9,8 @@ import MuiAlert from "@material-ui/lab/Alert";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { FlightDataRender } from "../flight-data/FlightDataRender";
+import { Header } from "../header/Header";
+
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -195,119 +197,124 @@ export const FlightForm = () => {
   // console.log(flightData);
 
   return (
-    <div className={styles.form_container}>
-      <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity="warning">
-          Please select both origin & destination before proceeding.
-        </Alert>
-      </Snackbar>
+    <>
+    <Header />
+    <div className={styles.form_wrapper}>
+      <div className={styles.form_container}>
+        <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+          <Alert onClose={handleClose} severity="warning">
+            Please select both origin & destination before proceeding.
+          </Alert>
+        </Snackbar>
 
-      <form onSubmit={handleSubmit} className={styles.flight_form}>
-        <div className={styles.origin_autocomplete}>
-          <Autocomplete
-            id="origin_id"
-            options={
-              originDropdownData?.Places
-                ? originDropdownData.Places
-                : defaultData1
-            }
-            getOptionLabel={(option) => option.PlaceName}
-            style={{ width: 300 }}
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                onChange={(e) => debouncedOrigin(e.target.value)}
-                label="Origin"
-                variant="outlined"
+        <form onSubmit={handleSubmit} className={styles.flight_form}>
+          <div className={styles.origin_autocomplete}>
+            <Autocomplete
+              id="origin_id"
+              options={
+                originDropdownData?.Places
+                  ? originDropdownData.Places
+                  : defaultData1
+              }
+              getOptionLabel={(option) => option.PlaceName}
+              style={{ width: 300 }}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  onChange={(e) => debouncedOrigin(e.target.value)}
+                  label="Origin"
+                  variant="outlined"
+                />
+              )}
+            />
+          </div>
+
+          <div className={styles.swap_places}>
+            <RiExchangeFill
+              // onClick={swapPlaces}
+              style={{ fontSize: "50px", cursor: "pointer" }}
+            />
+          </div>
+
+          <div className={styles.origin_autocomplete}>
+            <Autocomplete
+              id="destination_id"
+              options={
+                destinationDropdownData?.Places
+                  ? destinationDropdownData.Places
+                  : defaultData2
+              }
+              getOptionLabel={(option) => option.PlaceName}
+              style={{ width: 300 }}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  onChange={(e) => debouncedDestination(e.target.value)}
+                  label="Destination"
+                  variant="outlined"
+                />
+              )}
+            />
+          </div>
+
+          <div className={styles.date_range}>
+            {itenary === "one_way" ? (
+              <DatePicker
+                className={styles.date_range_input}
+                required={true}
+                selected={startDate_OW}
+                onChange={(date) => setStartDate_OW(date)}
+                placeholderText="Select Date"
+                isClearable={true}
+                dateFormat="MMMM d, yyyy"
+              />
+            ) : (
+              <DatePicker
+                className={styles.date_range_input}
+                required={true}
+                selectsRange={true}
+                startDate={startDate}
+                endDate={endDate}
+                onChange={(update) => {
+                  setDateRange(update);
+                }}
+                placeholderText="Select Date Range"
+                isClearable={true}
+                dateFormat="MMMM d, yyyy"
               />
             )}
-          />
-        </div>
+          </div>
 
-        <div className={styles.swap_places}>
-          <RiExchangeFill
-            // onClick={swapPlaces}
-            style={{ fontSize: "50px", cursor: "pointer" }}
-          />
-        </div>
+          <div className={styles.search_flight_btn_div}>
+            <button className={styles.search_flight_btn}>Search</button>
+          </div>
+        </form>
 
-        <div className={styles.origin_autocomplete}>
-          <Autocomplete
-            id="destination_id"
-            options={
-              destinationDropdownData?.Places
-                ? destinationDropdownData.Places
-                : defaultData2
-            }
-            getOptionLabel={(option) => option.PlaceName}
-            style={{ width: 300 }}
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                onChange={(e) => debouncedDestination(e.target.value)}
-                label="Destination"
-                variant="outlined"
-              />
-            )}
-          />
-        </div>
-
-        <div className={styles.date_range}>
-          {itenary === "one_way" ? (
-            <DatePicker
-              className={styles.date_range_input}
-              required={true}
-              selected={startDate_OW}
-              onChange={(date) => setStartDate_OW(date)}
-              placeholderText="Select Date"
-              isClearable={true}
-              dateFormat="MMMM d, yyyy"
+        <div className={styles.radio_div}>
+          <div style={{ margin: "" }}>
+            <RadioInput
+              label=""
+              value="one_way"
+              checked={itenary}
+              setter={setItenary}
             />
-          ) : (
-            <DatePicker
-              className={styles.date_range_input}
-              required={true}
-              selectsRange={true}
-              startDate={startDate}
-              endDate={endDate}
-              onChange={(update) => {
-                setDateRange(update);
-              }}
-              placeholderText="Select Date Range"
-              isClearable={true}
-              dateFormat="MMMM d, yyyy"
+            <label>One Way</label>
+          </div>
+
+          <div style={{ margin: "" }}>
+            <RadioInput
+              label=""
+              value="round_trip"
+              checked={itenary}
+              setter={setItenary}
             />
-          )}
+            <label>Round Trip</label>
+          </div>
         </div>
-
-        <div className={styles.search_flight_btn_div}>
-          <button className={styles.search_flight_btn}>Search</button>
-        </div>
-      </form>
-
-      <div className={styles.radio_div}>
-        <div style={{ margin: "" }}>
-          <RadioInput
-            label=""
-            value="one_way"
-            checked={itenary}
-            setter={setItenary}
-          />
-          <label>One Way</label>
-        </div>
-
-        <div style={{ margin: "" }}>
-          <RadioInput
-            label=""
-            value="round_trip"
-            checked={itenary}
-            setter={setItenary}
-          />
-          <label>Round Trip</label>
-        </div>
+        <FlightDataRender data={flightData} />
       </div>
-      <FlightDataRender data={flightData} />
     </div>
+    </>
   );
 };
 

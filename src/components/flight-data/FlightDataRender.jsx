@@ -60,7 +60,7 @@ export const FlightDataRender = (props) => {
     setOutDates(data.Dates);
   }, [data]);
 
-  console.log(data);
+  // console.log(data);
 
   React.useEffect(() => {
     const results = carriers?.map((item, i) => {
@@ -84,7 +84,7 @@ export const FlightDataRender = (props) => {
     }, 500);
   }, [quotes, carriers]);
 
-  console.log(result, "result");
+  // console.log(result, "result");
 
   return (
     <div className={styles.render_data_container}>

@@ -1,14 +1,18 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./Header.module.css";
-import { FaPlaneDeparture, FaHotel, FaTrain } from "react-icons/fa";
-import { FlightForm } from "../flight-form/FlightForm";
-import { HotelForm } from "../hotel-form/HotelForm";
-import { TrainForm } from "../train-form/TrainForm";
+import { FaPlaneDeparture, FaHotel, FaSuitcaseRolling } from "react-icons/fa";
 import { useHistory } from "react-router-dom";
+import { userManagement } from "../../data-context-provider/DataContextProvider";
+import Trip from "../../assets/trip.png";
 
 export const Header = () => {
   let history = useHistory();
+  let dataContext = React.useContext(userManagement);
+  let {handelLogOut, isAuth} = dataContext;
+
+  console.log(dataContext.loading);
+ 
 
   return (
     <div className="header">
@@ -23,13 +27,13 @@ export const Header = () => {
             Hotels.
           </NavLink>
 
-          <NavLink className={styles.nav_links} to="/trains">
-            Trains.
+          <NavLink className={styles.nav_links} to="/my_bookings">
+            My Bookings.
           </NavLink>
 
-          <NavLink className={styles.nav_links} to="/explore">
-            And More.
-          </NavLink>
+          <button className={styles.logout_btn} onClick={handelLogOut} >
+            Log Out
+          </button>
         </div>
       </div>
 
@@ -44,7 +48,7 @@ export const Header = () => {
             }}
           >
             <div className={styles.form_card_icon_and_text}>
-              <FaPlaneDeparture style={{ fontSize: "40px" }} />
+              <FaPlaneDeparture style={{ fontSize: "40px", margin: "auto" }} />
               <span>Flights</span>
             </div>
           </NavLink>
@@ -58,7 +62,7 @@ export const Header = () => {
             }}
           >
             <div className={styles.form_card_icon_and_text}>
-              <FaHotel style={{ fontSize: "40px" }} />
+              <FaHotel style={{ fontSize: "40px", margin: "auto" }} />
               <span>Hotels</span>
             </div>
           </NavLink>
@@ -66,24 +70,28 @@ export const Header = () => {
           <NavLink
             id="train_nav"
             className={styles.nav_icons_link}
-            to="/trains"
+            to="/my_bookings"
             activeStyle={{
               color: "royalblue",
             }}
           >
             <div className={styles.form_card_icon_and_text}>
-              <FaTrain style={{ fontSize: "40px" }} />
-              <span>Trains</span>
+              <FaSuitcaseRolling style={{ fontSize: "40px", margin: "auto" }} />
+              <span>My Bookings</span>
             </div>
           </NavLink>
         </div>
       </div>
-
-      <div className={styles.form_wrapper}>
-        {history.location.pathname === "/flights" && <FlightForm />}
-        {history.location.pathname === "/hotels" && <HotelForm />}
-        {history.location.pathname === "/trains" && <TrainForm />}
-      </div>
+      
+      {!history.pathname === "/flights" || !history.pathname === "/hotels" || !history.pathname === "/my_bookings"  &&
+        <div className={styles.form_wrapper}>
+            <div className={styles.homepage_content}>
+              <h1 style={{marginTop: "50px"}}>Hello, Lets Explore !</h1>
+              <h4>Book the cheapeast flights & hotels</h4>
+              <img src={Trip} />
+          </div>
+        </div>
+      }
     </div>
   );
 };

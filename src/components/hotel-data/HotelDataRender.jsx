@@ -10,7 +10,7 @@ import { CgGym } from "react-icons/cg";
 export const HotelDataRender = (props) => {
   const { data } = props;
 
-  console.log(data);
+  // console.log(data);
   return (
     <div className={styles.render_data_container}>
       {data.length ? (

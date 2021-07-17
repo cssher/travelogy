@@ -69,3 +69,22 @@
   display: flex;
   justify-content: center;
 }
+
+.logout_btn {
+  background: #34229e;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.homepage_content{
+  margin: auto;
+}
+
+.homepage_content > img {
+  width: 30%;
+  height: 30%;
+}

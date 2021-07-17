@@ -8,6 +8,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import {hotelDatabase} from "../../hotel-db/HotelDB";
 import { HotelDataRender } from "../hotel-data/HotelDataRender";
+import { Header } from "../header/Header";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -53,12 +54,15 @@ export const HotelForm = () => {
     }
   };
 
-  console.log(hotelData);
+  // console.log(hotelData);
 
 
 
 
   return (
+    <>
+    <Header />
+    <div className={styles.form_wrapper}>
     <div className={styles.form_container}>
       <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="warning">
@@ -108,5 +112,7 @@ export const HotelForm = () => {
       </form>
       <HotelDataRender data={hotelData} />
     </div>
+    </div>
+    </>
   );
 };
