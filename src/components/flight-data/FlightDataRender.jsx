@@ -2,6 +2,8 @@ import React from "react";
 import styles from "./FlightDataRender.module.css";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import FlightPreloader from "../../assets/fly_around.gif";
+import { v4 as uuid } from "uuid";
+import axios from "axios";
 
 import AirIndiaLogo from "../../assets/airline-logos/AI.png";
 import EmiratesLogo from "../../assets/airline-logos/EK.png";
@@ -16,8 +18,10 @@ import SingaporeLogo from "../../assets/airline-logos/SQ.png";
 import TurkishLogo from "../../assets/airline-logos/TK.png";
 import AllPurposeLogo from "../../assets/airline-logos/UK.png";
 
+
 import Modal from '@material-ui/core/Modal';
 import {MdAirplanemodeActive} from "react-icons/md";
+import { userManagement } from "../../data-context-provider/DataContextProvider";
 
 
 const airlineLogos = {
@@ -43,8 +47,26 @@ export const FlightDataRender = (props) => {
   const [result, setResult] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
   const [open, setOpen] = React.useState(false);
+  const [origin, setOrigin] = React.useState("");
+  const [destination, setDestination] = React.useState("");
+  const [logo, setLogo] = React.useState("");
+  const [carrierName, setCarrierName] = React.useState("");
+  const [outboundDate, setOutboundDate] = React.useState("");
+  const [price, setPrice] = React.useState("");
+  const active_user = React.useContext(userManagement);
 
-  const handleOpen = () => {
+  const {loggedUserData} = active_user;
+  console.log(loggedUserData, "hhhh");
+  
+  
+
+  const handleOpen = (OriginData, DestinationData, LogoData, NameData, OutboundDateData, PriceData) => {
+    setOrigin(OriginData);
+    setDestination(DestinationData);
+    setLogo(LogoData);
+    setCarrierName(NameData);
+    setOutboundDate(OutboundDateData);
+    setPrice(PriceData)
     setOpen(true);
   };
 
@@ -86,6 +108,44 @@ export const FlightDataRender = (props) => {
 
   // console.log(result, "result");
 
+ 
+
+  let modal_body = (
+    <div>
+      <h3>{origin} <MdAirplanemodeActive/> {destination} </h3>
+      <h4><img src={logo} alt="" width="30px" /> {carrierName}</h4>
+      <h4>₹ {price}/-</h4>
+      <h3>{new Date(outboundDate).toLocaleString("en-us", {weekday: "short",month: "short",year: "numeric",day: "numeric",})}</h3>
+    </div>
+  );
+
+  const bookFlight = () => {
+    let id = uuid();
+    let user_id = loggedUserData.user_id;
+    axios.post("http://localhost:3000/flights", {
+      id,
+      origin,
+      destination,
+      price,
+      outboundDate,
+      carrierName,
+      user_id
+      
+            })
+            .then((res) => {
+                // setLoading(false)
+                // setError(false)
+                // reloadUsers(res.data)
+            })
+            .catch((err) => {
+                // setError(true)
+                // setLoading(false)
+            });
+
+            setOpen(false);
+
+  }
+
   return (
     <div className={styles.render_data_container}>
       <div className={styles.heading_div}>
@@ -122,11 +182,10 @@ export const FlightDataRender = (props) => {
                   <Modal open={open} onClose={handleClose} aria-labelledby="simple-modal-title" aria-describedby="simple-modal-description">
                   <div className={styles.modal_styles}>
                      <h2 className={styles.modal_title}>Confirm Flight Booking</h2>
-                       <p className={styles.simple_modal_description}>
-                            <h3>{new Date(e.OutboundDate).toLocaleString("en-us", {weekday: "short",month: "short",year: "numeric",day: "numeric",})}</h3>
-                            <h3>{e.Origin} <MdAirplanemodeActive/> {e.Destination} </h3>
-                            <button className={styles.conirm_booking_btn}>Confirm</button>
-                       </p>
+                       <article className={styles.simple_modal_description}>
+                            {modal_body}
+                       </article>
+                       <button className={styles.conirm_booking_btn} onClick={() => bookFlight()}>Confirm</button>
                   </div>
                   </Modal>
                   <li className={styles.list_li}>
@@ -154,7 +213,7 @@ export const FlightDataRender = (props) => {
                   <li className={styles.list_li}>
                     <button
                       className={styles.book_flight_btn}
-                      onClick={handleOpen}
+                      onClick={() => handleOpen(e.Origin, e.Destination, e.Logo, e.Name, e.OutboundDate, e.Price)}
                     >
                       Book
                     </button>
