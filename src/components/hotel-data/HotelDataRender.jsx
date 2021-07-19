@@ -23,7 +23,7 @@ export const HotelDataRender = (props) => {
                   <img
                     src={e.max_photo_url}
                     className={styles.hotel_image}
-                    alt="hotel picture"
+                    alt=""
                     width="100%"
                     height="100%"
                   />
@@ -44,16 +44,17 @@ export const HotelDataRender = (props) => {
                     <a
                       href={`https://maps.google.com?q=${e.latitude},${e.longitude}`}
                       target="_blank"
+                      rel="noreferrer"
                     >
                       View On Map
                     </a>
                   </h4>
                   <p id="config">
-                    <FaSwimmer className={styles.icons}/>
-                    <IoRestaurant className={styles.icons}/>
-                    <FaWifi className={styles.icons}/>
-                    <FaParking className={styles.icons}/>
-                    <CgGym className={styles.icons}/>
+                    <FaSwimmer className={styles.icons} />
+                    <IoRestaurant className={styles.icons} />
+                    <FaWifi className={styles.icons} />
+                    <FaParking className={styles.icons} />
+                    <CgGym className={styles.icons} />
                   </p>
                 </div>
 
@@ -76,30 +77,37 @@ export const HotelDataRender = (props) => {
               </div>
 
               <div className={styles.main_right}>
-                
                 <div className={styles.price_div}>
+                  <article>
+                    <span className={styles.final_price}>
+                      <span className={styles.currency}>
+                        {e.price_breakdown.currency}
+                      </span>
+                      {e.price_breakdown.all_inclusive_price}
+                    </span>
+                    &nbsp;
+                    <span className={styles.strikethrough_price}>
+                      <span className={styles.currency}>
+                        {e.price_breakdown.currency}
+                      </span>
+                      {e.price_breakdown.all_inclusive_price + 750}
+                    </span>
+                  </article>
 
-                    <article>
-                      <span className={styles.final_price}><span className={styles.currency}>{e.price_breakdown.currency}</span>{e.price_breakdown.all_inclusive_price}</span>
-                        &nbsp;
-                      <span className={styles.strikethrough_price}><span className={styles.currency}>{e.price_breakdown.currency}</span>{e.price_breakdown.all_inclusive_price + 750}</span>
-                    </article>
-
-                    <button className={styles.book_hotel_btn}><a href={e.url} target="_blank">Book Now</a></button>
-
+                  <button className={styles.book_hotel_btn}>
+                    <a href={e.url} target="_blank" rel="noreferrer">
+                      Book Now
+                    </a>
+                  </button>
                 </div>
-
               </div>
-
-
-
             </div>
           );
         })
       ) : (
         <div className={styles.image_div}>
           <h1>Lets find you an awesome place to stay ! </h1>
-          <img src={HotelPreloader} width="400px" height="200px" />
+          <img src={HotelPreloader} width="400px" height="200px" alt="" />
         </div>
       )}
     </div>

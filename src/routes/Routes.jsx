@@ -1,7 +1,6 @@
 import { React } from "react";
 import { Route, Switch } from "react-router-dom";
 import { FlightForm } from "../components/flight-form/FlightForm";
-import { Header } from "../components/header/Header";
 import { HotelForm } from "../components/hotel-form/HotelForm";
 import { MyBookings } from "../components/my-bookings/MyBookings";
 import { Login } from "../pages/login/Login";
@@ -12,7 +11,6 @@ function Routes() {
   return (
     <div>
       {/* <PrivateRoute exact path="/" Component={Header} /> */}
-      
 
       <Switch>
         <PrivateRoute path="/" exact Component={FlightForm} />

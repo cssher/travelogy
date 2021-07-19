@@ -38,52 +38,52 @@
 }
 
 .list_li {
-    margin: auto;
-    font-size: large;
-    font-weight: bolder;
+  margin: auto;
+  font-size: large;
+  font-weight: bolder;
 }
 
-.book_flight_btn{
-    padding: 10px;
-    border: none;
-    border-radius: 15px;
-    background-color: rgb(146, 90, 236);
-    color: white;
-    font-weight: bold;
-    width: 100%;
-    cursor: pointer;
+.book_flight_btn {
+  padding: 10px;
+  border: none;
+  border-radius: 15px;
+  background-color: rgb(146, 90, 236);
+  color: white;
+  font-weight: bold;
+  width: 100%;
+  cursor: pointer;
 }
 
 .modal_styles {
-    top: 50%;
-    left: 50%;
-    background-color: rgb(250, 242, 242); /* Black w/ opacity */
-    display: grid;
-    place-items: center;
-    transform: translate(-50%, -50%);
-    position: absolute;
-    width: 400px;
-    padding: 2px 4px 3px;
-    height: 50%;
+  top: 50%;
+  left: 50%;
+  background-color: rgb(250, 242, 242); /* Black w/ opacity */
+  display: grid;
+  place-items: center;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  width: 400px;
+  padding: 2px 4px 3px;
+  height: 50%;
 }
 
 .modal_title {
-    text-align: center;
-    text-decoration: underline;
-    text-decoration-color: hotpink;
-    text-decoration-thickness: 0.2em;
+  text-align: center;
+  text-decoration: underline;
+  text-decoration-color: hotpink;
+  text-decoration-thickness: 0.2em;
 }
 
 .simple_modal_description {
- text-align: center;
- margin: auto;
+  text-align: center;
+  margin: auto;
 }
 
 .conirm_booking_btn {
- padding: 10px;
- border: none;
- background: rgb(117, 255, 104);
- font-weight: bold;
- border-radius: 10px;
- cursor: pointer;
+  padding: 10px;
+  border: none;
+  background: rgb(117, 255, 104);
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
 }

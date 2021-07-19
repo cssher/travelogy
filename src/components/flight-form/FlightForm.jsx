@@ -11,7 +11,6 @@ import "react-datepicker/dist/react-datepicker.css";
 import { FlightDataRender } from "../flight-data/FlightDataRender";
 import { Header } from "../header/Header";
 
-
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
@@ -33,7 +32,7 @@ const RadioInput = ({ label, value, checked, setter }) => {
     <label>
       <input
         type="radio"
-        checked={checked == value}
+        checked={checked === value}
         onChange={() => setter(value)}
       />
       <span>{label}</span>
@@ -44,6 +43,7 @@ const RadioInput = ({ label, value, checked, setter }) => {
 export const FlightForm = () => {
   const [originDropdownData, setOriginDropdownData] = useState([]);
   const [destinationDropdownData, setDestinationDropdownData] = useState([]);
+  // eslint-disable-next-line
   const debouncedOrigin = useCallback(debounce(onOriginChange, 300), []);
   const [dateRange, setDateRange] = useState([null, null]);
   const [startDate, endDate] = dateRange;
@@ -51,6 +51,7 @@ export const FlightForm = () => {
   const [itenary, setItenary] = useState("one_way");
   const [flightData, setFlightData] = useState({});
 
+  // eslint-disable-next-line
   const debouncedDestination = useCallback(
     debounce(onDestinationChange, 300),
     []
@@ -99,7 +100,7 @@ export const FlightForm = () => {
       });
   }
 
-  let allDropdownData = [];
+  // let allDropdownData = [];
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -169,20 +170,20 @@ export const FlightForm = () => {
     }
   };
 
-  const swapPlaces = () => {
-    let originValue = document.querySelector("#origin_id").value;
-    let destinationValue = document.querySelector("#destination_id").value;
-    let arr;
-    if (originValue && destinationValue) {
-      let destination = originValue;
-      let origin = destinationValue;
-      document.querySelector("#origin_id").value = origin;
-      document.querySelector("#destination_id").value = destination;
-      arr = [...originDropdownData.Places, ...destinationDropdownData.Places];
-      allDropdownData.push(arr);
-    }
-    // console.log(allDropdownData);
-  };
+  // const swapPlaces = () => {
+  //   let originValue = document.querySelector("#origin_id").value;
+  //   let destinationValue = document.querySelector("#destination_id").value;
+  //   let arr;
+  //   if (originValue && destinationValue) {
+  //     let destination = originValue;
+  //     let origin = destinationValue;
+  //     document.querySelector("#origin_id").value = origin;
+  //     document.querySelector("#destination_id").value = destination;
+  //     arr = [...originDropdownData.Places, ...destinationDropdownData.Places];
+  //     allDropdownData.push(arr);
+  //   }
+  //   // console.log(allDropdownData);
+  // };
 
   const [open, setOpen] = React.useState(false);
 
@@ -198,122 +199,122 @@ export const FlightForm = () => {
 
   return (
     <>
-    <Header />
-    <div className={styles.form_wrapper}>
-      <div className={styles.form_container}>
-        <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
-          <Alert onClose={handleClose} severity="warning">
-            Please select both origin & destination before proceeding.
-          </Alert>
-        </Snackbar>
+      <Header />
+      <div className={styles.form_wrapper}>
+        <div className={styles.form_container}>
+          <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+            <Alert onClose={handleClose} severity="warning">
+              Please select both origin & destination before proceeding.
+            </Alert>
+          </Snackbar>
 
-        <form onSubmit={handleSubmit} className={styles.flight_form}>
-          <div className={styles.origin_autocomplete}>
-            <Autocomplete
-              id="origin_id"
-              options={
-                originDropdownData?.Places
-                  ? originDropdownData.Places
-                  : defaultData1
-              }
-              getOptionLabel={(option) => option.PlaceName}
-              style={{ width: 300 }}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  onChange={(e) => debouncedOrigin(e.target.value)}
-                  label="Origin"
-                  variant="outlined"
+          <form onSubmit={handleSubmit} className={styles.flight_form}>
+            <div className={styles.origin_autocomplete}>
+              <Autocomplete
+                id="origin_id"
+                options={
+                  originDropdownData?.Places
+                    ? originDropdownData.Places
+                    : defaultData1
+                }
+                getOptionLabel={(option) => option.PlaceName}
+                style={{ width: 300 }}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    onChange={(e) => debouncedOrigin(e.target.value)}
+                    label="Origin"
+                    variant="outlined"
+                  />
+                )}
+              />
+            </div>
+
+            <div className={styles.swap_places}>
+              <RiExchangeFill
+                // onClick={swapPlaces}
+                style={{ fontSize: "50px", cursor: "pointer" }}
+              />
+            </div>
+
+            <div className={styles.origin_autocomplete}>
+              <Autocomplete
+                id="destination_id"
+                options={
+                  destinationDropdownData?.Places
+                    ? destinationDropdownData.Places
+                    : defaultData2
+                }
+                getOptionLabel={(option) => option.PlaceName}
+                style={{ width: 300 }}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    onChange={(e) => debouncedDestination(e.target.value)}
+                    label="Destination"
+                    variant="outlined"
+                  />
+                )}
+              />
+            </div>
+
+            <div className={styles.date_range}>
+              {itenary === "one_way" ? (
+                <DatePicker
+                  className={styles.date_range_input}
+                  required={true}
+                  selected={startDate_OW}
+                  onChange={(date) => setStartDate_OW(date)}
+                  placeholderText="Select Date"
+                  isClearable={true}
+                  dateFormat="MMMM d, yyyy"
+                />
+              ) : (
+                <DatePicker
+                  className={styles.date_range_input}
+                  required={true}
+                  selectsRange={true}
+                  startDate={startDate}
+                  endDate={endDate}
+                  onChange={(update) => {
+                    setDateRange(update);
+                  }}
+                  placeholderText="Select Date Range"
+                  isClearable={true}
+                  dateFormat="MMMM d, yyyy"
                 />
               )}
-            />
-          </div>
+            </div>
 
-          <div className={styles.swap_places}>
-            <RiExchangeFill
-              // onClick={swapPlaces}
-              style={{ fontSize: "50px", cursor: "pointer" }}
-            />
-          </div>
+            <div className={styles.search_flight_btn_div}>
+              <button className={styles.search_flight_btn}>Search</button>
+            </div>
+          </form>
 
-          <div className={styles.origin_autocomplete}>
-            <Autocomplete
-              id="destination_id"
-              options={
-                destinationDropdownData?.Places
-                  ? destinationDropdownData.Places
-                  : defaultData2
-              }
-              getOptionLabel={(option) => option.PlaceName}
-              style={{ width: 300 }}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  onChange={(e) => debouncedDestination(e.target.value)}
-                  label="Destination"
-                  variant="outlined"
-                />
-              )}
-            />
-          </div>
-
-          <div className={styles.date_range}>
-            {itenary === "one_way" ? (
-              <DatePicker
-                className={styles.date_range_input}
-                required={true}
-                selected={startDate_OW}
-                onChange={(date) => setStartDate_OW(date)}
-                placeholderText="Select Date"
-                isClearable={true}
-                dateFormat="MMMM d, yyyy"
+          <div className={styles.radio_div}>
+            <div style={{ margin: "" }}>
+              <RadioInput
+                label=""
+                value="one_way"
+                checked={itenary}
+                setter={setItenary}
               />
-            ) : (
-              <DatePicker
-                className={styles.date_range_input}
-                required={true}
-                selectsRange={true}
-                startDate={startDate}
-                endDate={endDate}
-                onChange={(update) => {
-                  setDateRange(update);
-                }}
-                placeholderText="Select Date Range"
-                isClearable={true}
-                dateFormat="MMMM d, yyyy"
+              <label>One Way</label>
+            </div>
+
+            <div style={{ margin: "" }}>
+              <RadioInput
+                label=""
+                value="round_trip"
+                checked={itenary}
+                setter={setItenary}
               />
-            )}
+              <label>Round Trip</label>
+            </div>
           </div>
-
-          <div className={styles.search_flight_btn_div}>
-            <button className={styles.search_flight_btn}>Search</button>
-          </div>
-        </form>
-
-        <div className={styles.radio_div}>
-          <div style={{ margin: "" }}>
-            <RadioInput
-              label=""
-              value="one_way"
-              checked={itenary}
-              setter={setItenary}
-            />
-            <label>One Way</label>
-          </div>
-
-          <div style={{ margin: "" }}>
-            <RadioInput
-              label=""
-              value="round_trip"
-              checked={itenary}
-              setter={setItenary}
-            />
-            <label>Round Trip</label>
-          </div>
+          <FlightDataRender data={flightData} />
         </div>
-        <FlightDataRender data={flightData} />
       </div>
-    </div>
     </>
   );
 };

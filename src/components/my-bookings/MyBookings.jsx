@@ -21,8 +21,6 @@ export const MyBookings = () => {
 
   // console.log(flightData, "flidata");
 
-  const user_data = React.useContext(userManagement);
-
   // console.log(user_data.loggedUserData);
   const active_user = React.useContext(userManagement);
   const { loggedUserData } = active_user;

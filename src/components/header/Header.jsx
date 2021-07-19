@@ -9,14 +9,12 @@ import Trip from "../../assets/trip.png";
 export const Header = () => {
   let history = useHistory();
   let dataContext = React.useContext(userManagement);
-  let {handelLogOut, isAuth} = dataContext;
+  let { handelLogOut } = dataContext;
 
   console.log(dataContext.loading);
- 
 
   return (
     <div className="header">
-        
       <div className={styles.sticky_nav}>
         <div className={styles.nav_routes}>
           <NavLink className={styles.nav_links} to="/flights">
@@ -31,7 +29,7 @@ export const Header = () => {
             My Bookings.
           </NavLink>
 
-          <button className={styles.logout_btn} onClick={handelLogOut} >
+          <button className={styles.logout_btn} onClick={handelLogOut}>
             Log Out
           </button>
         </div>
@@ -82,16 +80,18 @@ export const Header = () => {
           </NavLink>
         </div>
       </div>
-      
-      {!history.pathname === "/flights" || !history.pathname === "/hotels" || !history.pathname === "/my_bookings"  &&
+
+      {(!history.pathname === "/flights" ||
+        !history.pathname === "/hotels" ||
+        !history.pathname === "/my_bookings") && (
         <div className={styles.form_wrapper}>
-            <div className={styles.homepage_content}>
-              <h1 style={{marginTop: "50px"}}>Hello, Lets Explore !</h1>
-              <h4>Book the cheapeast flights & hotels</h4>
-              <img src={Trip} />
+          <div className={styles.homepage_content}>
+            <h1 style={{ marginTop: "50px" }}>Hello, Lets Explore !</h1>
+            <h4>Book the cheapeast flights & hotels</h4>
+            <img src={Trip} alt="" />
           </div>
         </div>
-      }
+      )}
     </div>
   );
 };
